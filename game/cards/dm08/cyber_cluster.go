@@ -1,4 +1,4 @@
-package dm01
+package dm08
 
 import (
 	"duel-masters/game/civ"
