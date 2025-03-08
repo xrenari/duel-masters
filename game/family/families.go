@@ -53,4 +53,5 @@ const (
 	VolcanoDragon   = "Volcano Dragon"
 	EarthDragon     = "Earth Dragon"
 	ZombieDragon    = "Zombie Dragon"
+	MechaDelSol	= "Mecha Del Sol"
 )
