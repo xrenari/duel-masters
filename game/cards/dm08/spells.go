@@ -68,3 +68,30 @@ func MuscleCharger(c *match.Card) {
 
 	}))
 }
+
+// RootCharger ...
+func RootCharger(c *match.Card) {
+
+	c.Name = "Root Charger"
+	c.Civ = civ.Nature
+	c.ManaCost = 3
+	c.ManaRequirement = []string{civ.Nature}
+
+	c.Use(fx.Spell, fx.Charger, fx.When(fx.SpellCast, func(card *match.Card, ctx *match.Context) {
+
+		ctx.Match.ApplyPersistentEffect(func(ctx *match.Context, exit func()) {
+
+			if event, ok := ctx.Event.(*match.CreatureDestroyed); ok && event.Card.Player == card.Player {
+				ctx.InterruptFlow()
+				card.Player.MoveCard(event.Card.ID, match.BATTLEZONE, match.MANAZONE, card.ID)
+				ctx.Match.ReportActionInChat(card.Player, fmt.Sprintf("%s was destroyed but moved to manazone because of %s", event.Card.Name, card.Name))
+			}
+
+			// remove persistent effect when turn ends
+			_, ok := ctx.Event.(*match.EndStep)
+			if ok {
+				exit()
+			}
+		})
+	}))
+}
