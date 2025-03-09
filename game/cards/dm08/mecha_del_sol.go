@@ -6,7 +6,7 @@ import (
 	"duel-masters/game/fx"
 	"duel-masters/game/match"
 )
-
+// NastashaChannelerOfSuns ...
 func NastashaChannelerOfSuns(c *match.Card) {
 
 	c.Name = "Nastasha, Channeler of Suns"
