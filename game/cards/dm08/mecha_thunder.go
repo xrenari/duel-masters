@@ -8,7 +8,7 @@ import (
 	"duel-masters/game/match"
 	"fmt"
 )
-
+// KuukaiFinderOfKarma ...
 func KuukaiFinderOfKarma(c *match.Card) {
 
 	c.Name = "Kuukai, Finder of Karma"
